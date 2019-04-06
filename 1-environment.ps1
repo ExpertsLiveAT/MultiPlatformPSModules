@@ -1,5 +1,10 @@
 # Systemumgebung ist in Betriebssystemen unterschiedlich
 
+## Wo bin ich ? - nicht ganz eindeutig .?
+[Environment]::OSVersion
+[Environment]::OSVersion.Platform
+[Environment]::Is64BitOperatingSystem
+
 ## Windows => sogar Autocomplete von $env
 $env:USERNAME   
 $env:COMPUTERNAME
