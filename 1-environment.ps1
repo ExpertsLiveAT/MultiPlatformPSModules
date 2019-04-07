@@ -6,12 +6,11 @@
 [Environment]::Is64BitOperatingSystem
 
 ## Windows => sogar Autocomplete von $env
-$env:USERNAME   
-$env:COMPUTERNAME
-"Text mit neuer `n Zeile dazwischen"
-"Text mit neuer `r Zeile dazwischen"
-"Text mit neuer `r `n Zeile dazwischen"
-$env:TEMP
+invoke-command -Session $win,$lin -ScriptBlock {
+    "Computername is: $env:COMPUTERNAME"
+    "Text mit neuer `n Zeile dazwischen"
+    "Tempdrive is: $env:TEMP"
+}
 
 # Stattdessen: [Environment]
 [Environment]::UserName
