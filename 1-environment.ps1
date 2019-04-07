@@ -41,11 +41,27 @@ $script = {
 }
 invoke-command -Session $win,$lin,$mac -ScriptBlock $script
 
-# Pfad Variable
-$env:Path -split ';'
-$env:PATH -split ';'
-[Environment]::GetEnvironmentVariable('Path') -split ';'
+# Systemvariablen mit [Environment] abfragen
+$script = {
+    $DotNetMachineName = [Environment]::MachineName
+    "Computername is: $DotNetmachinename"
+    'Path .Net'
+    [Environment]::GetEnvironmentVariable('Path') -split ';'
+    'CAPITAL LETTERS PATH .Net'
+    [Environment]::GetEnvironmentVariable('PATH') -split ';'
+}
+invoke-command -Session $win,$lin,$mac -ScriptBlock $script
 
-#PS Systemvariablen funktionieren überall
-$PSEdition
+#PS Systemvariablen funktionieren leider auch nicht überall
+
+$script = {
+    $DotNetMachineName = [Environment]::MachineName
+    "Computername is: $DotNetmachinename"
+    "PSedition is:$PSEdition"
+    "PSCulture is: $PSCulture"
+    "PSUICulture is: $PSCulture"
+    "HOME is: $HOME"
+    "PID is: $PID"
+}
+invoke-command -Session $win,$lin,$mac -ScriptBlock $script
 
