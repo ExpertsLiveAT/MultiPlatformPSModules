@@ -1,4 +1,4 @@
-# DONT use ALIAS !!!
+# DONT use ALIASes !!!
 
 $script = {
     $DotNetMachineName = [Environment]::MachineName
@@ -8,3 +8,4 @@ $script = {
 }
 invoke-command -Session $win,$lin,$mac -ScriptBlock $script
 
+# Ausschließlich PS Cmdlets verwenden

@@ -3,6 +3,7 @@
 ## einfaches Listing
 Get-Childitem
 ### Aber Achtung ....
+Get-ChildItem | ForEach-Object { $_ }
 Get-ChildItem | ForEach-Object { [string]$_ }
 
 ### Deshalb Eigenschaften verwenden

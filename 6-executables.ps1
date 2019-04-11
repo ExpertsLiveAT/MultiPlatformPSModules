@@ -1,7 +1,7 @@
-# Ausführbare Dateinen: WINdows ==> EXE, Linux/mac ==> System Permission
+# Ausführbare Dateinen: Windows ==> EXE, Linux/mac ==> System Permission
 Get-Command -Name 'dotnet' -ErrorAction Ignore
-Get-Command -Name 'node' -ErrorAction Ignore
+#Get-Command -Name 'node' -ErrorAction Ignore
 
-# Running commands
+# Running commands without extension !
 dotnet --version
-node --version
+#node --version

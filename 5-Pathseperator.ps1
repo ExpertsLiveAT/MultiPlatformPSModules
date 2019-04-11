@@ -1,7 +1,7 @@
 # Der Unterteiler des Pfades ist unterschiedlich !
 [IO.Path]::PathSeparator
 
-$env:PATH -split [IO.Path]::PathSeparator
+$env:PATH -split [IO.Path]::PathSeparator # ersetzt ';'
 
 $script = {
     $DotNetMachineName = [Environment]::MachineName
@@ -21,7 +21,7 @@ invoke-command -Session $win,$lin,$mac -ScriptBlock $script
 [IO.Path]::GetRandomFileName()
 [IO.Path]::HasExtension('dateips1')
 [IO.Path]::HasExtension('datei.ps1')
-# Den verstehe ich nich ...
+# Den verstehe ich nicht ...
 [IO.Path]::GetInvalidPathChars()
 
 

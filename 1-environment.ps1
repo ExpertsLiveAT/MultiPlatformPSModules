@@ -1,32 +1,25 @@
-# Systemumgebung ist in Betriebssystemen unterschiedlich
+# $env: Systemumgebung ist in Betriebssystemen unterschiedlich
 
-## Wo bin ich ? - nicht ganz eindeutig .?
-$script = {
-    " "
-    $OsVersion = [Environment]::OSVersion
-    "OS Version: $OsVersion"
-    $OsPlatform = [Environment]::OSVersion.Platform
-    "OS Platform: $OsPlatform"
-    $is64BitOS = [Environment]::Is64BitOperatingSystem
-    "Is 64 BitOS: $is64BitOS"
-}
-invoke-command -Session $win,$lin,$mac -ScriptBlock $script
-
-## Windows => sogar Autocomplete von $env
 $Env:COMPUTERNAME
-$env:USER
+$env:USERNAME
+set-location env:
+Set-location c:
 
 $script = {
     " "
     "Computername is: $env:COMPUTERNAME"
-    "User is: $env:USER"
+    "USERNAME is: $env:USERNAME"
+    "USER is: $env:USER"
     "Text mit neuer `n Zeile dazwischen"
     "Tempdrive is: $env:TEMP"
+    "Shell is: $env:SHELL"
+    "Systemdrive is: $env:Systemdrive"
 }
 invoke-command -Session $win,$lin,$mac -ScriptBlock $script
 
-# Stattdessen: [Environment]
+# LÖSUNG Stattdessen: [Environment]
 $script = {
+    " "
     $DotNetMachineName = [Environment]::MachineName
     "Computername is: $DotNetmachinename"
     
@@ -41,8 +34,9 @@ $script = {
 }
 invoke-command -Session $win,$lin,$mac -ScriptBlock $script
 
-# Systemvariablen mit [Environment] abfragen
+# BEISPIEL: Systemvariablen z.B. Path mit [Environment] abfragen
 $script = {
+    " "
     $DotNetMachineName = [Environment]::MachineName
     "Computername is: $DotNetmachinename"
     'Path .Net'
@@ -55,6 +49,7 @@ invoke-command -Session $win,$lin,$mac -ScriptBlock $script
 #PS Systemvariablen funktionieren leider auch nicht überall
 
 $script = {
+    " "
     $DotNetMachineName = [Environment]::MachineName
     "Computername is: $DotNetmachinename"
     "PSedition is:$PSEdition"
@@ -62,6 +57,18 @@ $script = {
     "PSUICulture is: $PSCulture"
     "HOME is: $HOME"
     "PID is: $PID"
+}
+invoke-command -Session $win,$lin,$mac -ScriptBlock $script
+
+## Wo bin ich ? - nicht ganz eindeutig .?
+$script = {
+    " "
+    $OsVersion = [Environment]::OSVersion
+    "OS Version: $OsVersion"
+    $OsPlatform = [Environment]::OSVersion.Platform
+    "OS Platform: $OsPlatform"
+    $is64BitOS = [Environment]::Is64BitOperatingSystem
+    "Is 64 BitOS: $is64BitOS"
 }
 invoke-command -Session $win,$lin,$mac -ScriptBlock $script
 

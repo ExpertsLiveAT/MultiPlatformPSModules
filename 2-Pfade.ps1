@@ -23,11 +23,12 @@ invoke-command -Session $win,$lin,$mac -ScriptBlock $script
 
 # Relative Pfadangaben (z.B. User Input) mit Resolve-Path auflösen
 set-location ([Environment]::GetFolderPath('LocalApplicationData'))
+resolve-path .\Lenovo
+
+
 
 # [IO.Path]::DirectorySeparatorChar (Das habt ihr nicht gewusst :-)
 $ds = [IO.Path]::DirectorySeparatorChar
-
-
 
 # Anwendung - combination von Pfaden
 "c:\temp{0}Subpfad" -f $ds
