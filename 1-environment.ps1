@@ -15,7 +15,7 @@ $script = {
     "Shell is: $env:SHELL"
     "Systemdrive is: $env:Systemdrive"
 }
-invoke-command -Session $win,$lin,$mac -ScriptBlock $script
+invoke-command -Session $mac -ScriptBlock $script
 
 # LÖSUNG Stattdessen: [Environment]
 $script = {
@@ -32,7 +32,7 @@ $script = {
     $EnvTempPath = [IO.Path]::GetTempPath()
     "Tempdrive is: $envTempPath"
 }
-invoke-command -Session $win,$lin,$mac -ScriptBlock $script
+invoke-command -Session $mac -ScriptBlock $script
 
 # BEISPIEL: Systemvariablen z.B. Path mit [Environment] abfragen
 $script = {
@@ -44,7 +44,7 @@ $script = {
     'CAPITAL LETTERS PATH .Net'
     [Environment]::GetEnvironmentVariable('PATH') -split ';'
 }
-invoke-command -Session $win,$lin,$mac -ScriptBlock $script
+invoke-command -Session $mac -ScriptBlock $script
 
 #PS Systemvariablen funktionieren leider auch nicht überall
 
@@ -54,11 +54,11 @@ $script = {
     "Computername is: $DotNetmachinename"
     "PSedition is:$PSEdition"
     "PSCulture is: $PSCulture"
-    "PSUICulture is: $PSCulture"
+    "PSUICulture is: $PSUICulture"
     "HOME is: $HOME"
     "PID is: $PID"
 }
-invoke-command -Session $win,$lin,$mac -ScriptBlock $script
+invoke-command -Session $mac -ScriptBlock $script
 
 ## Wo bin ich ? - nicht ganz eindeutig .?
 $script = {
@@ -70,5 +70,5 @@ $script = {
     $is64BitOS = [Environment]::Is64BitOperatingSystem
     "Is 64 BitOS: $is64BitOS"
 }
-invoke-command -Session $win,$lin,$mac -ScriptBlock $script
+invoke-command -Session $mac -ScriptBlock $script
 

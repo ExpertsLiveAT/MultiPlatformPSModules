@@ -9,7 +9,7 @@ $script = {
     $curpath = [Environment]::CurrentDirectory # Get-Location ginge auch
     Join-Path  $curpath -ChildPath 'pscoretest'
 }
-invoke-command -Session $win,$lin,$mac -ScriptBlock $script
+invoke-command -Session $mac -ScriptBlock $script
 
 
 # Get-Folderpath erlaubt z.B. Programfiles, Programs

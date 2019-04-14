@@ -13,7 +13,7 @@ $script = {
     "*** Splitting the correct way ***"
     [Environment]::GetEnvironmentVariable('PATH') -split $psep
 }
-invoke-command -Session $win,$lin,$mac -ScriptBlock $script
+invoke-command -Session $mac -ScriptBlock $script
 
 
 #Noch ein paar weitere IO.Path Features:

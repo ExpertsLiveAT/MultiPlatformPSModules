@@ -6,6 +6,6 @@ $script = {
     
     'ls','cat','pwd' | foreach {Get-Alias $_}
 }
-invoke-command -Session $win,$lin,$mac -ScriptBlock $script
+invoke-command -Session $mac -ScriptBlock $script
 
 # Ausschließlich PS Cmdlets verwenden
